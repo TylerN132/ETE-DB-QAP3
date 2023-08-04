@@ -12,7 +12,7 @@ async function getallusers() {
     if (error) {
       throw error;
     }
-    console.log(results.rows);
+    return results.rows;
   });
 }
 
