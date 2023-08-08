@@ -7,8 +7,11 @@
   </head>
   <body>
     <ul>
-      <% users.forEach(user=>{ %>
-      <li>username: <% user.username %> userid: <% user.id %></li>
+      <% rows.forEach(user => { %>
+      <li>
+        username: <%= user.username %> <br />
+        userid: <%= user.userid %>
+      </li>
       <% }) %>
     </ul>
   </body>
