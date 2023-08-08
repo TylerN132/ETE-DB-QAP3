@@ -4,16 +4,16 @@ const pool = new Pool({
   password: "Rochelle#1563",
   port: "5432",
   database: "ETE-QAP3-DB",
-  host: "LocalHost",
+  host: "localhost",
 });
 
 async function getallusers() {
-  pool.query("SELECT * FROM useraccount", (error, results) => {
-    if (error) {
-      throw error;
-    }
-    return results.rows;
-  });
+  try {
+    results = await pool.query("SELECT * FROM useraccount");
+  } catch (e) {
+    console.error(e);
+  }
+  return results.rows;
 }
 
 async function getusersprogression() {

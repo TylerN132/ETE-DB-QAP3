@@ -1,12 +1,16 @@
 const express = require("express");
 const router = express.Router();
 const gamesDAL = require("./gamesDAL");
-router.get("/", (request, response) => {
-  gamesDAL.getusersprogression();
-  response.send("Hello World");
-});
 
 router.get("/", async (request, response) => {
-  const { rows: users } = await gamesDAL.getallusers();
-  response.render("index", { users });
+  const rows = await gamesDAL.getallusers();
+  try {
+    console.log(rows);
+    response.render("index", { rows });
+  } catch (e) {
+    console.error(e);
+    response.render("Oopsie");
+  }
 });
+
+module.exports = router;
